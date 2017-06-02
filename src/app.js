@@ -37,10 +37,11 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     Start() {
+        this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
+        console.log('number to guess:', this.attributes.numberToGuess);
         this.emit(':ask', START_GAME);
     },
     NumberGuessIntent() {
-        this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
         guess = this.event.request.intent.slots.number.value;
         console.log('NumberGuessIntent jow', this.attributes.numberToGuess);
         if (guess !== undefined) {
