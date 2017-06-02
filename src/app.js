@@ -19,11 +19,6 @@ module.exports.handlers = {
     LaunchRequest() {
         this.handler.state = states.START;
         this.emitWithState('Start');
-    },
-    NumberGuessIntent() {
-        this.handler.state = states.GUESSINGGAME;
-        this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
-        this.emitWithState('Start');
     }
 };
 
@@ -43,7 +38,8 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     NumberGuessIntent() {
-        guess = this.event.request.intent.slots.number;
+        this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
+        guess = this.event.request.intent.slots.number.value;
         if (guess !== undefined) {
             if (guess > this.attributes.numberToGuess) {
                 this.emit(':ask', TOO_LOW);
