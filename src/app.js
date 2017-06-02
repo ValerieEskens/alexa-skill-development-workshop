@@ -42,7 +42,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         this.emit(':ask', START_GAME);
     },
     NumberGuessIntent() {
-        guess = this.event.request.intent.slots.number.value;
+        guess = parseInt(this.event.request.intent.slots.number.value, 10);
         console.log('NumberGuessIntent jow', this.attributes.numberToGuess);
         if (guess !== undefined) {
             if (guess < this.attributes.numberToGuess) {
@@ -52,7 +52,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
             } else if (guess === this.attributes.numberToGuess) {
                 this.emit(':ask', CORRECT);
             } else {
-                this.emit(':tell', 'kapotski');
+                this.emit(':ask', 'kapotski');
             }
         }
     },
