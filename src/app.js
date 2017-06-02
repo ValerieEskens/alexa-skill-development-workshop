@@ -27,9 +27,8 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
        this.emit(':ask', WELCOME_MESSAGE);
    },
    'AMAZON.YesIntent': function () {
-       this.emit(':ask', START_GAME);
        this.handler.state = states.GUESSINGGAME;
-       this.emitWithState('NumberGuessIntent');
+       this.emitWithState('Start');
    },
    Unhandled() {
        this.emitWithState('Start');
@@ -37,6 +36,9 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 });
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
+    Start() {
+        this.emit(':ask', START_GAME);
+    },
     NumberGuessIntent() {
         this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
         guess = this.event.request.intent.slots.number.value;
