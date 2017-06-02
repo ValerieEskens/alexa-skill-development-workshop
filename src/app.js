@@ -1,4 +1,5 @@
-const WELCOME_MESSAGE = 'Hello Valerie!';
+const WELCOME_MESSAGE = 'Yow CG';
+
 
 module.exports.handlers = {
     LaunchRequest() {
