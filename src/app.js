@@ -37,7 +37,7 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     Start() {
-        this.attributes.numberToGuess = parseInt(Math.floor((Math.random() * 100) + 1));
+        this.attributes.numberToGuess = parseInt(Math.floor((Math.random() * 100) + 1), 10);
         console.log('number to guess:', this.attributes.numberToGuess);
         this.emit(':ask', START_GAME);
     },
