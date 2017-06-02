@@ -40,7 +40,7 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
    }
 });
 
-module.exports.startHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
+module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     Start() {
         guess = this.event.request.intent.slots.number;
         if (guess !== undefined) {
@@ -57,13 +57,3 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         this.emitWithState('Start');
     }
 });
-
-module.exports.generalHandlers = {
-    SayHelloWorld(callback) {
-        if (typeof this.attributes.helloWorldCount === 'undefined') {
-            this.attributes.helloWorldCount = 0;
-        }
-        this.attributes.helloWorldCount++;
-        callback();
-    }
-};
