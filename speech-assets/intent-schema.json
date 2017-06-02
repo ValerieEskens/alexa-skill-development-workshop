@@ -1,11 +1,13 @@
 {
   "intents": [
     {
-      "intent": "NumberGuessIntent",
-      "slots": {
-        "name": "number",
-        "type": "AMAZON.NUMBER"
-      }
+      "slots": [
+        {
+          "name": "number",
+          "type": "AMAZON.NUMBER"
+        }
+      ],
+      "intent": "NumberGuessIntent"
     },
     {
       "intent": "AMAZON.YesIntent"

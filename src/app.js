@@ -38,7 +38,6 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     NumberGuessIntent() {
-        this.emit(':tell', 'congrats, I work');
         this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
         guess = this.event.request.intent.slots.number.value;
         if (guess !== undefined) {
