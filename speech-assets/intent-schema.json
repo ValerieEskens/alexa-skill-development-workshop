@@ -1,7 +1,7 @@
 {
   "intents": [
     {
-      "intent": "GuessingGameIntent",
+      "intent": "NumberGuessIntent",
       "slots": {
         "name": "number",
         "type": "AMAZON.NUMBER"

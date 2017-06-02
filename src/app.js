@@ -20,7 +20,7 @@ module.exports.handlers = {
         this.handler.state = states.START;
         this.emitWithState('Start');
     },
-    GuessingGameIntent() {
+    NumberGuessIntent() {
         this.handler.state = states.GUESSINGGAME;
         this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
         this.emitWithState('Start');
@@ -54,6 +54,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         }
     },
     Unhandled() {
+        this.handler.state = states.START;
         this.emitWithState('Start');
     }
 });
