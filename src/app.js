@@ -49,7 +49,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
                 this.emit(':ask', TOO_LOW);
             } else if (guess > this.attributes.numberToGuess) {
                 this.emit(':ask', TOO_HIGH);
-            } else if (guess === this.attributes.numberToGuess) {
+            } else if (guess == this.attributes.numberToGuess) {
                 this.emit(':ask', CORRECT);
             } else {
                 this.emit(':tell', 'kapotski');
