@@ -36,7 +36,7 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
        this.emit(':ask', START_GAME);
    },
    Unhandled() {
-       this.emit(':ask', WELCOME_MESSAGE);
+       this.emitWithState('Start');
    }
 });
 
@@ -54,6 +54,6 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         }
     },
     Unhandled() {
-        this.emit(':ask', WELCOME_MESSAGE);
+        this.emitWithState('Start');
     }
 });
