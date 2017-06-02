@@ -37,7 +37,7 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.START, {
 
 module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     Start() {
-        this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
+        this.attributes.numberToGuess = parseInt(Math.floor((Math.random() * 100) + 1));
         console.log('number to guess:', this.attributes.numberToGuess);
         this.emit(':ask', START_GAME);
     },
@@ -49,7 +49,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
                 this.emit(':ask', TOO_LOW);
             } else if (guess > this.attributes.numberToGuess) {
                 this.emit(':ask', TOO_HIGH);
-            } else if (guess == this.attributes.numberToGuess) {
+            } else if (guess === this.attributes.numberToGuess) {
                 this.emit(':ask', CORRECT);
             } else {
                 this.emit(':tell', 'kapotski');
