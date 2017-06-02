@@ -57,3 +57,13 @@ module.exports.startHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         this.emitWithState('Start');
     }
 });
+
+module.exports.generalHandlers = {
+    SayHelloWorld(callback) {
+        if (typeof this.attributes.helloWorldCount === 'undefined') {
+            this.attributes.helloWorldCount = 0;
+        }
+        this.attributes.helloWorldCount++;
+        callback();
+    }
+};
