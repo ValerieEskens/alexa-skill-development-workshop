@@ -53,7 +53,8 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
         }
     },
     Unhandled() {
-        this.handler.state = states.START;
-        this.emitWithState('Start');
+        this.emit(':tell', 'I\'m broken');
+        // this.handler.state = states.START;
+        // this.emitWithState('Start');
     }
 });
