@@ -42,7 +42,7 @@ module.exports.gameHandlers = Alexa.CreateStateHandler(states.GUESSINGGAME, {
     NumberGuessIntent() {
         this.attributes.numberToGuess = Math.floor((Math.random() * 100) + 1);
         guess = this.event.request.intent.slots.number.value;
-        console.log('NumberGuessIntent jow', guess);
+        console.log('NumberGuessIntent jow', this.attributes.numberToGuess);
         if (guess !== undefined) {
             if (guess > this.attributes.numberToGuess) {
                 this.emit(':ask', TOO_LOW);
